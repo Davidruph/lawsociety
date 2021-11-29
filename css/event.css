@@ -1,0 +1,370 @@
+@import url(grid.css);
+@import url(spacing.css);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Radjnani", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.78;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+}
+
+p {
+    line-height: 30px;
+    font-size: 18px;
+    margin-bottom: 0px;
+    font-family: "Barlow", sans-serif;
+}
+
+
+/* Header styles */
+
+.header__section {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.logo {
+    padding: 15px;
+}
+
+.header__pic {
+    height: 75px;
+    width: 174px;
+}
+
+.header__part {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    padding: 37px;
+}
+
+.nav__menu {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 73px;
+    list-style: none;
+    background-color: white;
+    display: block;
+    border-bottom: 4px solid #9c0505;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease 0s;
+}
+
+.dropdown li {
+    padding: 7px 25px;
+    font-size: 16px;
+    color: #777;
+    letter-spacing: 1;
+    font-weight: 500;
+    display: inline-block
+}
+
+.nav__menu:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown li:hover {
+    color: #9c0505;
+    transition: all 0.6s ease 0s;
+}
+
+.nav__menu {
+    margin-right: 45px;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+    position: relative;
+}
+
+.nav__menu:hover {
+    color: #9c0505;
+}
+
+.nav__menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    width: 0;
+    height: 3px;
+    background-color: #9c0505;
+    transition: width 0.6s ease-out;
+}
+
+.nav__menu:hover::before {
+    width: 100%;
+}
+
+.header__btn {
+    color: white;
+    display: inline-block;
+    padding: 11px 20px;
+    font-size: 12px;
+    border-radius: 40px;
+    background: #9c0505;
+    margin: 29px 15px;
+}
+
+
+/* BANNER styles */
+
+.banner {
+    background-image: url(../img/law-colleges-banner.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../img/law-colleges-banner.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+}
+
+.banner__content {
+    padding: 50px 0px;
+    margin: 50px 0px;
+}
+
+.banner__text {
+    font-size: 77px;
+    color: #faf7e3;
+    font-weight: bold;
+}
+
+.banner__section {
+    text-align: end;
+}
+
+.banner__list1 {
+    color: #363a57;
+    background-color: white;
+    padding: 35px;
+    font-size: 16px;
+}
+
+.banner__list2 {
+    font-size: 16px;
+    color: #9c0505;
+    background-color: white;
+    padding: 35px;
+    padding-left: .5rem;
+}
+
+.banner__list2::before {
+    color: #6c757d;
+    content: "।";
+}
+
+
+/* Event styles */
+
+.event__row {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.event__part {
+    background-color: #F8F8F8;
+}
+
+.description {
+    padding: 40px 50px 0px;
+}
+
+.day {
+    font-size: 14px;
+    color: #363a57;
+    background-color: #f0eeec;
+    padding: 4px 10px;
+    font-weight: 600;
+    line-height: 22px;
+    display: inline-block;
+    margin-bottom: 23px;
+}
+
+.event__title {
+    font-size: 23px;
+    font-weight: bold;
+    color: #363a57;
+}
+
+.event__photo {
+    max-width: 100%;
+}
+
+.organizator__text {
+    font-size: 10px;
+    color: #7c7a71;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    display: block;
+    margin: 0px 50px;
+}
+
+.author__info {
+    margin: 0px 50px
+}
+
+.author__name {
+    font-size: 14px;
+    color: #363a57;
+    font-weight: 700;
+    display: block;
+    margin: 0px 50px;
+}
+
+.author__img {
+    margin: -40px 0px;
+}
+
+.btn__lists {
+    display: flex;
+    padding: 0px 47px;
+}
+
+.share {
+    padding: 11px;
+    margin: 46px 20px;
+    border: 2px solid #bebcba;
+}
+
+.btn2 {
+    padding: 19px 7px;
+    font-size: 16px;
+    color: #7b7f85;
+    font-weight: 700;
+    border: 2px solid #bebcba;
+    margin: 45px 0px;
+    background-color: white;
+}
+
+.btn2:hover {
+    background-color: #9c0505;
+    border: 2px solid #9c0505;
+}
+
+
+/* Footer style */
+
+.footer {
+    background-image: url(../img/footer_dark_bg.png);
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.footer__list {
+    padding: 27px 0px;
+    line-height: 2;
+}
+
+.footer__row {
+    padding: 50px 0px;
+}
+
+.footer__pic {
+    max-width: 150px;
+}
+
+.readmore {
+    margin-top: 20px;
+}
+
+.footer__content i {
+    color: #9c0505;
+    margin-left: 6px;
+    font-size: 12px;
+}
+
+.footer__widget {
+    margin: 5px 20px;
+}
+
+.footer__widget1 {
+    margin: 7px 25px
+}
+
+.footer__widget1 h3 {
+    margin-bottom: 30px;
+}
+
+input[type=text] {
+    height: 50px;
+    width: 70%;
+    border: 1px solid #fff;
+    background-color: #fff;
+    padding: 8px 22px;
+}
+
+input[type=submit] {
+    border-color: #9c0505;
+    background-color: #9c0505;
+    width: 50px;
+    margin-left: -6px;
+    height: 52px;
+}
+
+.footer__par {
+    padding-top: 12px;
+}
+
+.footer__social {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer__icons {
+    font-size: 16px;
+    color: #1b1f2e;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 11px 18px;
+    background-color: #fff;
+}
+
+.footer__form__icon {
+    position: absolute;
+    right: 235px;
+    top: 134px;
+}
+
+.offer {
+    background-color: grey;
+}
+
+.offer__block {
+    display: flex;
+    padding: 32px 0px;
+}
+
+.offer__icon {
+    padding: 19px 25px;
+}
