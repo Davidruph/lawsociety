@@ -26,6 +26,14 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     height: 450px;
 }
+#wrapper_projects{
+    background-image: url(../../img/law-colleges-banner.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/law-colleges-banner.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: 450px;
+}
 .frm_text{
     font-size: 20px;
     color: #9c0505;
@@ -124,4 +132,66 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1.6px;
     text-align: center;
     
+}
+.logo_project{
+    opacity: 0.6;
+    max-width: 100%;
+}
+.logo_project:hover{
+    opacity: 1;
+}
+
+/* Tabs*/
+/*section {
+    padding: 60px 0;
+}
+*/
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#tabs{
+    /*background: #007b5e;
+    color: #eee;*/
+}
+#tabs h6.section-title{
+    /*color: #000;*/
+}
+
+#tabs .nav-tabs .nav-item.show .gallery_tabs, .nav-tabs .gallery_tabs.active {
+    color: #f3f3f3;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+#tabs .nav-tabs .gallery_tabs {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #000;
+    font-size: 20px;
+}
+
+.public_card{
+    margin-top: -70px;
+    width: 250px;
+    height: auto;
+}
+.gallery_text{
+    color: #363a57;
+    font-size: 20px;
+    font-weight: bold;
+}
+.gallery_text:hover{
+    color: #9c0505;
+}
+.hide{
+    display: none;
+}
+.gallery:hover .hide {
+  display: block;
 }

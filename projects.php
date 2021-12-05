@@ -37,7 +37,7 @@ if (isset($_POST['suscribe'])) {
 </head>
 <body>
 
-<section class="wrapper">
+<section id="wrapper_projects">
 
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
@@ -129,7 +129,7 @@ if (isset($_POST['suscribe'])) {
 <div class="container mt-5 mb-5">
     <div class="">
         <h5 class="text-center">OUR PLANS</h5>
-        <h2 class="text-center mt-4 blog_text mb-5">ONGOING AND FINALIZED PROJECTS</h2>
+        <h2 class="text-center mt-4 blog_text mb-5">ONGOING AND FINALIZED <br> PROJECTS</h2>
     </div>
     <div class="row">
         <div class="card-deck">
@@ -171,8 +171,37 @@ if (isset($_POST['suscribe'])) {
     </div>
 </div>
 
-<div class="container">
-    
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-3 mb-2">
+            <div class="card shadow">
+              <div class="card-body text-center">
+                <img src="img/logo_1.png" class="logo_project" alt="logo_1.png">
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+             <div class="card shadow">
+              <div class="card-body text-center">
+                <img src="img/logo_2.png" class="logo_project" alt="logo_2">
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+             <div class="card shadow">
+              <div class="card-body text-center">
+                <img src="img/logo_3.png" class="logo_project" alt="logo_3">
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+             <div class="card shadow">
+              <div class="card-body text-center">
+                <img src="img/logo_4.png" class="logo_project" alt="logo_4">
+              </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="footer">
