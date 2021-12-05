@@ -64,7 +64,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="single.php">Single Users</a>
                                     <a class="nav-link" href="all.php">Mail all subscribers</a>
-                                    <a class="nav-link" href="mails.php">View Mails</a>
+                                   <!--  <a class="nav-link" href="mails.php">View Mails</a> -->
                                 </nav>
                             </div>
                             

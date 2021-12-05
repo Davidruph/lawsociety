@@ -1,0 +1,127 @@
+.header__pic {
+    height: 75px;
+    width: 174px;
+}
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+    .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+}
+ .body{
+    font-family: "Radjnani", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.78;
+    color: white;
+}
+.wrapper{
+    background-image: url(../../img/sing.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/sing.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: 450px;
+}
+.frm_text{
+    font-size: 20px;
+    color: #9c0505;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+}
+.title_text{
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #363a57;
+    margin-bottom: 30px;
+}
+.contact_color{
+    background-color: #f0eeec;
+}
+#name, #email{
+    width: 100%;
+    margin: 2px 0px 30px;
+    border: 0px;
+    background-color: #f5f5f5;
+    border-color:#000;
+}
+#message{
+    width: 100%;
+    height: 180px;
+    border: 0px;
+    background-color: #f5f5f5;
+    font-size: 16px;
+    color: #757575;
+    border-color:#000 !important;
+}
+.forum_right {
+    border: 2px solid #ebedf4;
+}
+.p-text{
+    font-size: 18px;
+    color: #636886;
+}
+.icon{
+    background-color: #f0eeec;
+}
+.footer {
+    background-image: url(../../img/footer_dark_bg.png);
+    background-repeat: no-repeat;
+    position: relative;
+    max-width: 100%;
+    background-size: cover;
+    height: auto;
+}
+.footer-text{
+    line-height: 30px;
+    font-size: 18px;
+    font-family: "Barlow", sans-serif;
+}
+.blog_text{
+    color: #363a57;
+    font-size: 60px;
+    line-height: 1;
+}
+.img_blog{
+    max-width: 100% !important;
+    transition: all .3s ease-in !important;
+}
+.tag{
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px 17px;
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    font-size: 12px;
+    
+}
+.tag a{
+    text-decoration: none;
+}
+.tag:hover{
+    background-color: red;
+    color: white;
+     border-width: 0;
+     text-decoration: none;
+}
+.card-title{
+    font-size: 17px;
+    color: #363a57;
+    text-align: center;
+    padding: 0px 1px;
+}
+.card-text1{
+    font-size: 14px;
+    color: #9c0505;
+    font-weight: bold;
+    letter-spacing: 1.6px;
+    text-align: center;
+    
+}
