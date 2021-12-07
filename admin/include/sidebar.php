@@ -43,6 +43,18 @@
                                 </nav>
                             </div>
 
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collpseLayouts" aria-expanded="false" aria-controls="collpseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></i></div>
+                                Project
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collpseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="add-project.php">Add Project</a>
+                                    <a class="nav-link" href="manage-project.php">Manage Project</a>
+                                </nav>
+                            </div>
+
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa fa-list-alt"></i></div>
                                 Category

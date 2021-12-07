@@ -1,8 +1,8 @@
 <?php
     require 'dbconn.php';
-
     $errorss = array();
     $successs = array();
+
     //if suscribe button is clicked
 if (isset($_POST['suscribe'])) {
     $suscriber_email = $_POST['suscriber_email'];
@@ -17,11 +17,6 @@ if (isset($_POST['suscribe'])) {
     $errorss['data'] = 'Ooops, an error occured';
   }
 }
-
-$sql = 'SELECT * FROM tblprojects';
-$statement = $connection->prepare($sql);
-$statement->execute();
-$projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +31,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Law Society of Azerbaijan</title>
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/css/style.css">
@@ -43,7 +39,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<section id="wrapper_projects">
+<section class="wrapper">
 
 <div class="container-fluid" data-aos="fade-right" data-aos-duration="500">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
@@ -112,83 +108,48 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <br>
 
     <div class="text-left">
-        <h1 class="text-white font-weight-bold ml-5 mt-5 page-title">Projects</h1>
+        <h1 class="text-white font-weight-bold ml-5 mt-5">Our mission</h1>
     </div>
 
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8"></div>
-        <div class="col-lg-3">
-            <div class="card mt-5 border-0 text-right">
-                <div class="card-body mt-5 mb-5">
-                <a href="#" class="mr-3 text-secondary text-decoration-none">About</a>
-                <a href="#" class="text-secondary text-decoration-none">Project</a>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 </div>
 </section>
 
-<div class="container mt-5 mb-5" data-aos="fade-up" data-aos-duration="500">
-    <div class="">
-        <h5 class="text-center">OUR PLANS</h5>
-        <h2 class="text-center mt-4 blog_text mb-5">ONGOING AND FINALIZED <br> PROJECTS</h2>
-    </div>
-    <div class="row">
-        <div class="card-deck">
-            <?php foreach($projects as $project): //php fetch blog post from database?>
-          <div class="card">
-            <img class="card-img-top img_blog" src="admin/uploads/<?php echo $project['image']; ?>" alt="Card image cap">
-            <div class="blog__tags">
-                <a href="#" class="tag"><?php echo $project['tags']; ?></a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title stretched-link">"<?php echo $project['project_title']; ?>"</h5>
-              <p class="card-text card-text1"><?php echo $project['PostingDate']; ?></p>
-              <form action="project-details.php"  method="post" class="text-center">
-                    <input type="hidden" name="edit_id" value="<?php echo $project["id"]; ?>">
-                      <button type="submit" name="btn_edit" class="btn btn-link text-center stretched-link">Continue reading</button>
-                </form>
-              
-            </div>
-          </div>
-          <?php endforeach; ?>
-        </div>
-    </div>
-</div>
 
-<div class="container mt-5 mb-5" data-aos="fade-down" data-aos-duration="500">
+
+<div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-lg-3 mb-2">
-            <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_1.png" class="logo_project" alt="logo_1.png">
-              </div>
+        <div class="col-lg-4">
+           <div class="card">
+                <div class="card-body">
+                     <div class="row">
+                   <img src="img/phone.png" alt="phone" class="text-left ml-2"><span class="ml-5 font-weight-bold"><p class="card-text">Call Us Now:</p>
+                    <p class="font-weight-bold">0 900 123.456.22</p></span>
+               </div>
+                </div>
             </div>
+              
         </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_2.png" class="logo_project" alt="logo_2">
-              </div>
+        <div class="col-lg-4">
+            <div class="card mt-1">
+                <div class="card-body">
+                     <div class="row">
+                  <img src="img/email.png" alt="phone" class="text-left ml-2"><span class="ml-5 font-weight-bold"><p class="card-text">Email Us:</p>
+                    <p class="font-weight-bold">info@sitename.com</p></span>
+               </div>
+                </div>
             </div>
+            
         </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_3.png" class="logo_project" alt="logo_3">
-              </div>
+        <div class="col-lg-4">
+            <div class="card mt-1">
+                <div class="card-body">
+                     <div class="row">
+                   <img src="img/info.png" alt="phone" class="text-left ml-2"><span class="ml-5 font-weight-bold"><p class="card-text">NGO Address:</p>
+                    <p class="font-weight-bold">487 South Park Avenue</p></span>
+               </div>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_4.png" class="logo_project" alt="logo_4">
-              </div>
-            </div>
+             
         </div>
     </div>
 </div>

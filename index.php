@@ -1,8 +1,76 @@
 <?php
-    require 'dbconn.php';
-    $errorss = array();
-    $successs = array();
+session_start();
+    if(isset($_SESSION['email'])) {
+        $id = $_SESSION['user'];
+        $fullname = $_SESSION['fullname'];
+        $role = $_SESSION['role'];
+        $email = $_SESSION['email'];
+    }
+    $conn = mysqli_connect("localhost", "root", "", "narmin34");
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'dbconn.php';
+
+$errors = array();
+$success = array();
+
+$errorss = array();
+$successs = array();
+
+//if submit button is clicked and inputs are not empty
+if (isset($_POST['submit'])) {
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $message = $_POST['message'];
+  
+  $mail = new PHPMailer(true);
+
+  try {
+    //Server settings
+   // $mail->SMTPDebug = SMTP::DEBUG_SERVER;            
+    $mail->Host = 'ssl://smtp.gmail.com:465';
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->Username = 'lawsocietyaze@gmail.com'; // Gmail address which you want to use as SMTP server
+    $mail->Password = 'L2021society'; // Gmail address Password
+    $mail->Port = 465; //587
+    $mail->SMTPSecure = 'ssl'; //tls
+    $mail->addAddress('lawsocietyaze@gmail.com'); // Email address where you want to receive emails (you can use any of your gmail address including the gmail address which you used as SMTP server)
+    $mail->setFrom('lawsocietyaze@gmail.com', 'Updates/Offers'); // Gmail address which you used as SMTP server
+    //$mail->debug = 2;
+    $mail->isHTML(true);
+    $mail->Subject = 'Message Received From (Law Society of Azerbaijan)';
+    $mail->Body = "
+        <br>
+        Name: $name
+        <br>
+        Email: $email
+        <br>
+        Message: $message
+        <br>";
+    $mail->AltBody = '';
+
+    if ($mail->Send()) 
+        $success['data'] = 'your message has been sent successfully';
+    else
+         $errors['mail'] = 'Email Not sent';
+    
+
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+
+}
+    
     //if suscribe button is clicked
 if (isset($_POST['suscribe'])) {
     $suscriber_email = $_POST['suscriber_email'];
@@ -17,6 +85,13 @@ if (isset($_POST['suscribe'])) {
     $errorss['data'] = 'Ooops, an error occured';
   }
 }
+
+//fetch blogs
+$sql = 'SELECT * FROM tblblog';
+$statement = $connection->prepare($sql);
+$statement->execute();
+$blogs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +105,15 @@ if (isset($_POST['suscribe'])) {
     <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Law Society of Azerbaijan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/css/style.css">
     
 </head>
 <body>
 
-<section class="wrapper_publication">
+<section class="wrapper_index">
 
 <div class="container-fluid" data-aos="fade-up" data-aos-duration="500">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
@@ -96,39 +171,95 @@ if (isset($_POST['suscribe'])) {
            
 
         </ul>
-       <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link btn btn-danger btn-lg text-white" href="contact.php">Make an Appointment</a>
-            </li>
-       </ul>
+        <?php
+        if(isset($_SESSION['email'])) {
+            ?>
+
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <label for="" class="text-white mr-2">Hi, <?= $fullname ?? '' ?></label>
+                <i class="fa fa-user-circle text-white fa-lg"></i>
+                <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle ml-2"> -->
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="logout.php">Log Out</a>
+              </div>
+            </li>   
+          </ul>
+
+            <?php
+        }
+        ?>
     </div>
     </nav>
     <br>
     <br>
 
     <div class="text-left">
-        <h1 class="text-white font-weight-bold ml-5 mt-5 page-title">Reports</h1>
+        <h1 class="text-white ml-5 mt-3 intro_title">NOW WE NEED HELP FROM YOU</h1>
+        <h2 class="h1 intro_index text-white ml-5 mt-3 mb-3 font-weight-bold">PLS HELP AND DONATE <br> FOR CHILDREN EDUCATION.</h2>
+
+        <a href="contact.php" class="btn ml-5 mt-4 mb-4 btn-danger">MAKE AN APPOINTMENT</a>
     </div>
 
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8"></div>
-        <div class="col-lg-3">
-            <div class="card mt-5 border-0 text-right">
-                <div class="card-body mt-5 mb-5">
-                <a href="#" class="mr-3 text-secondary text-decoration-none">Home</a>
-                <a href="#" class="text-secondary text-decoration-none">Case Studies</a>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 </div>
 </section>
 
+<div class="container mb-5">
+    <div class="mt-5 mb-5" data-aos="fade-left" data-aos-duration="500">
+        <h5 class="text-center">OUR NEWS BLOG</h5>
+    </div>
 
-<div class="container mt-2 mb-5" data-aos="fade-down" data-aos-duration="500">
+    <div class="row mb-2 mt-3" data-aos="fade-right" data-aos-duration="500">
+
+     <?php foreach($blogs as $blog): //php fetch blog post from database?>
+
+        <div class="col-md-6" id="blogs">
+
+            <div class="card-deck">
+              <div class="card row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <img class="card-img-top" src="admin/uploads/<?php echo $blog['image']; ?>" alt="Card image cap" width="272" height="300">
+                <div class="card-body text-center">
+                  <h5 class="card-title"><?php echo $blog['blog_title']; ?></h5>
+                  <p class="card-text">Author: <?php echo $blog['author']; ?></p>
+                  
+                  <p class="card-text mb-3">Category: <?php echo $blog['category']; ?></p>
+
+                   <form action="blogs-details.php"  method="post">
+                    <input type="hidden" name="edit_id" value="<?php echo $blog["id"]; ?>">
+                      <button type="submit" name="btn_edit" class="btn btn-link stretched-link">Continue reading</button>
+                </form>
+                </div>
+                <div class="card-footer w-100">
+                  <small class="text-muted text-left">Last updated <?php echo $blog['PostingDate']; ?></small>
+                  <button type="button" class="btn btn-primary btn-sm float-right">
+                      comments <span class="badge badge-light">
+                           <?php
+                           $blog_post_id = $blog["id"];
+                               $count=$connection->prepare("SELECT post_id FROM tblcomments WHERE post_id = $blog_post_id");
+                                    $count->execute();
+                                    $comments=$count->rowCount();
+                                    echo $comments; 
+                            ?>
+                      </span>
+                    </button>
+                  
+                </div>
+              </div>
+          </div>
+
+          
+        </div>
+
+    <?php endforeach; ?>
+   
+    
+  </div>
+</div>
+
+<div class="container mt-2 mb-5" data-aos="fade-up" data-aos-duration="500">
     <!-- Tabs -->
 <section id="tabs">
     <div class="container">
@@ -447,6 +578,85 @@ if (isset($_POST['suscribe'])) {
     </div>
 </section>
 <!-- ./Tabs -->
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="contact_color col-lg-8">
+            <div class="mt-5" data-aos="fade-left" data-aos-duration="500">
+                <h5 class=" ml-4 frm_text mb-3">CONTACT WITH US</h5>
+                <h2 class="ml-4 title_text">SEND MESSAGE</h2>
+                        <?php if (count($errors) > 0): ?>
+                          <div class="alert alert-danger alert-dismissible fade show ml-4 mr-5" role="alert">
+                          <?php foreach($errors as $error): ?> 
+                          <li><?php echo $error; ?></li>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                            
+                          <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if (count($success) > 0): ?>
+                          <div class="alert alert-success alert-dismissible fade show ml-4 mr-5" role="alert">
+                          <?php foreach($success as $succes): ?> 
+                          <li><?php echo $succes; ?></li>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                            
+                          <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                <form action="contact.php" method="post" class="mt-5">
+                    <div class="form-group ml-4 mr-5">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group ml-4 mr-5">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your email address" required>
+                    </div>
+
+                    <div class="form-group ml-4 mr-5">
+                        <textarea class="form-control" name="message" id="message" placeholder="What you are looking for?" required></textarea>
+                    </div>
+
+                    <div class="form-group ml-4 mr-5 mt-4">
+                        <input type="submit" class="btn btn-danger btn-lg btn-block" name="submit" value="Submit Now">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="forum_right col-lg-4" data-aos="fade-right" data-aos-duration="500">
+            <div class="mt-5">
+                <h5 class="frm_text ml-4 mb-3 text-center">CONTACT INFO</h5>
+                <h2 class="ml-4 title_text text-center">Details</h2>
+
+                <h5 class="font-weight-bold p-text text-center">ADDRESS</h5>
+                <p class="text-center p-text mt-4 mb-4">487 South Park Avenue United States, America </p>
+
+                <h5 class="font-weight-bold p-text text-center">PHONE</h5>
+                <p class="text-center p-text mt-4 mb-4">Local: 0 900 123.456.22 Mobile: 0 900 123.456.22 </p>
+
+                <h5 class="font-weight-bold p-text text-center">EMAIL</h5>
+                <p class="text-center p-text mt-4 mb-4">needhelp@puregiven.com <br>inquiry@puregiven.com</p>
+                
+                <div class="follow mb-5">
+                    <h5 class="font-weight-bold p-text text-center">FOLLOW</h5>
+                    <div class="row justify-content-center mt-4">
+                        <a href="" class="btn btn-outline-danger border mr-2 icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="" class="btn btn-outline-danger border mr-2 icon"><i class="fab fa-twitter"></i></a>
+                        <a href="" class="btn btn-outline-danger border mr-2 icon"><i class="fab fa-dribbble"></i></a>
+                        <a href="" class="btn btn-outline-danger border icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        </div>
+    
 </div>
 
 

@@ -1,8 +1,8 @@
 <?php
     require 'dbconn.php';
-
     $errorss = array();
     $successs = array();
+
     //if suscribe button is clicked
 if (isset($_POST['suscribe'])) {
     $suscriber_email = $_POST['suscriber_email'];
@@ -17,11 +17,6 @@ if (isset($_POST['suscribe'])) {
     $errorss['data'] = 'Ooops, an error occured';
   }
 }
-
-$sql = 'SELECT * FROM tblprojects';
-$statement = $connection->prepare($sql);
-$statement->execute();
-$projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +31,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Law Society of Azerbaijan</title>
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/css/style.css">
@@ -43,7 +39,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<section id="wrapper_projects">
+<section class="wrapper_partners">
 
 <div class="container-fluid" data-aos="fade-right" data-aos-duration="500">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
@@ -112,7 +108,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <br>
 
     <div class="text-left">
-        <h1 class="text-white font-weight-bold ml-5 mt-5 page-title">Projects</h1>
+        <h1 class="text-white font-weight-bold ml-5 mt-5">Partners</h1>
     </div>
 
     <div class="container">
@@ -132,65 +128,166 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </section>
 
-<div class="container mt-5 mb-5" data-aos="fade-up" data-aos-duration="500">
-    <div class="">
-        <h5 class="text-center">OUR PLANS</h5>
-        <h2 class="text-center mt-4 blog_text mb-5">ONGOING AND FINALIZED <br> PROJECTS</h2>
+<div class="container mb-5">
+    <div class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="500">
+        <h5 class="text-center">Corparate Partners</h5>
+        <h2 class="text-center mt-4">LAW PARTNERSHIP</h2>
+        <p class="text-center">We work with the best partners</p>
     </div>
-    <div class="row">
-        <div class="card-deck">
-            <?php foreach($projects as $project): //php fetch blog post from database?>
-          <div class="card">
-            <img class="card-img-top img_blog" src="admin/uploads/<?php echo $project['image']; ?>" alt="Card image cap">
-            <div class="blog__tags">
-                <a href="#" class="tag"><?php echo $project['tags']; ?></a>
+
+        <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Controls-->
+      <div class="controls-top text-center mb-3">
+        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3x"></i></a>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-circle-right fa-3x"></i></a>
+      </div>
+      <!--/.Controls-->
+
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li data-target="#multi-item-example" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox" data-aos="fade-right" data-aos-duration="500">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/8467bd76373087.5c679c94cea40.jpg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">DANIEL CASTRO</h4>
+                  <p class="card-text text-center">Lead Blockchain.</p>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title stretched-link">"<?php echo $project['project_title']; ?>"</h5>
-              <p class="card-text card-text1"><?php echo $project['PostingDate']; ?></p>
-              <form action="project-details.php"  method="post" class="text-center">
-                    <input type="hidden" name="edit_id" value="<?php echo $project["id"]; ?>">
-                      <button type="submit" name="btn_edit" class="btn btn-link text-center stretched-link">Continue reading</button>
-                </form>
-              
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/Flag_of_Europe.svg.png"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">JEFF J MCCARTHY</h4>
+                  <p class="card-text text-center">CO & Lead Blockchain</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-design-vector-24184638.jpeg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">BRADLEY L BOLLINGER</h4>
+                  <p class="card-text text-center">Lead Blockchain</p>
+                </div>
+              </div>
             </div>
           </div>
-          <?php endforeach; ?>
-        </div>
-    </div>
-</div>
 
-<div class="container mt-5 mb-5" data-aos="fade-down" data-aos-duration="500">
-    <div class="row">
-        <div class="col-lg-3 mb-2">
-            <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_1.png" class="logo_project" alt="logo_1.png">
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-template-office-logo-with-scale-vector-20459835.jpeg">
+                
+                <div class="card-body">
+                  <h4 class="card-title">PRISCILLA N MONACO</h4>
+                  <p class="card-text text-center">CEO & Lead Blockchain</p>
+                </div>
               </div>
             </div>
-        </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_2.png" class="logo_project" alt="logo_2">
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-design-vector-24184638.jpeg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">BRADLEY L BOLLINGER</h4>
+                  <p class="card-text text-center">Lead Blockchain</p>
+                </div>
               </div>
             </div>
-        </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_3.png" class="logo_project" alt="logo_3">
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/Flag_of_Europe.svg.png"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">PRISCILLA N MONACO</h4>
+                  <p class="card-text text-center">CEO & Lead Blockchain</p>
+                </div>
               </div>
             </div>
+          </div>
+
         </div>
-        <div class="col-lg-3">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_4.png" class="logo_project" alt="logo_4">
+        <!--/.Second slide-->
+
+        <!--Third slide-->
+        <div class="carousel-item">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-design-vector-24184638.jpeg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
               </div>
             </div>
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-design-vector-24184638.jpeg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 clearfix d-none d-md-block">
+              <div class="card mb-2">
+                <img class="card-img-top" src="img/law-firm-logo-design-vector-24184638.jpeg"
+                  alt="Card image cap">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+        <!--/.Third slide-->
+
+      </div>
+      <!--/.Slides-->
+
     </div>
+    <!--/.Carousel Wrapper-->
+
 </div>
 
 <div class="footer" data-aos="fade-down" data-aos-duration="500">

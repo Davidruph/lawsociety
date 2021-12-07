@@ -8,15 +8,15 @@ $success = array();
 //if submit button is clicked and inputs are not empty
 if (isset ($_POST['submit'])){
 
-  $blog_title = $_POST['blog_title'];
+  $project_title = $_POST['project_title'];
   $author = $_POST['author'];
-  $blog_description = $_POST['description'];
+  $project_description = $_POST['description'];
   $category = $_POST['category'];
   $tags = $_POST['blog_tags'];
   $postingdate = date("Y-m-d H:i:s", time());
 
-  if($blog_description === "") {
-        $errors['description'] = "Blog description is required";
+  if($project_description === "") {
+        $errors['description'] = "Project description is required";
   }else{
 
   $imgfile = $_FILES["postimage"]["name"];
@@ -36,10 +36,10 @@ if (isset ($_POST['submit'])){
   
   
 
-  $sql = 'INSERT INTO tblblog(blog_title, author, blog_description, image, category, tags, PostingDate) VALUES(:title, :author, :description, :imgnewfile, :category, :tags, :postingdate)';
+  $sql = 'INSERT INTO tblprojects(project_title, author, project_description, image, category, tags, PostingDate) VALUES(:title, :author, :description, :imgnewfile, :category, :tags, :postingdate)';
   $statement = $connection->prepare($sql);
 
-  if ($statement->execute([':title' => $blog_title, ':author' => $author, ':description' => $blog_description, ':category' => $category, ':tags' => $tags, ':imgnewfile' => $imgnewfile, ':postingdate' => $postingdate])) {
+  if ($statement->execute([':title' => $project_title, ':author' => $author, ':description' => $project_description, ':category' => $category, ':tags' => $tags, ':imgnewfile' => $imgnewfile, ':postingdate' => $postingdate])) {
     // Code for move image into directory
     move_uploaded_file($temp_name,"uploads/".$imgnewfile);
     $success['data'] = 'Blog post created successfully';
@@ -65,9 +65,9 @@ if (isset ($_POST['submit'])){
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Blog</h1>
+        <h1 class="mt-4">Project</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Add Blog Post</li>
+            <li class="breadcrumb-item active">Add Project Post</li>
         </ol>
          <?php if (count($errors) > 0): ?>
             <div class="alert alert-danger">
@@ -96,9 +96,9 @@ if (isset ($_POST['submit'])){
             </div>
 
             <div class="form-group">
-                <label class="col-md-5 control-label">Blog title</label>
+                <label class="col-md-5 control-label">Project title</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" value="" name="blog_title" required>
+                    <input type="text" class="form-control" value="" name="project_title" required>
                 </div>
             </div>
 
@@ -130,14 +130,14 @@ if (isset ($_POST['submit'])){
               </datalist>
 
               <div class="form-group">
-                <label class="col-md-5 control-label">Blog tags</label>
+                <label class="col-md-5 control-label">Project tag</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" value="" name="blog_tags" required placeholder="enter blog tag">
                 </div>
             </div>
          
                 <div class="form-group">
-                    <label class="col-md-5 control-label">Blog Description</label>
+                    <label class="col-md-5 control-label">Project Description</label>
                     <div class="col-md-10">
                         <textarea class="form-control" rows="5" name="description" id="description"></textarea>
                     </div>

@@ -34,6 +34,38 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     height: 450px;
 }
+.wrapper_publication{
+    background-image: url(../../img/banner2.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/banner2.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: 450px;
+}
+.wrapper_partners{
+    background-image: url(../../img/law-colleges-banner.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/banner2.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: 450px;
+}
+.wrapper_index{
+    background-image: url(../../img/1.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/1.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: auto;
+}
+.news_wrapper{
+    background-image: url(../../img/45.jpeg);
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1)), url(../../img/45.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: auto;
+}
 .frm_text{
     font-size: 20px;
     color: #9c0505;
@@ -194,4 +226,21 @@ section .section-title {
 }
 .gallery:hover .hide {
   display: block;
+}
+.page-title{
+    font-size: 77px;
+    color: #faf7e3;
+    font-weight: bold;
+}
+.intro_title{
+    font-size: 40px;
+    color: #363a57;
+}
+.wrapper_blog{
+    background-image: url(../../img/professional-male-lawyer-judge-working-with-contract-papers-documents-gavel-scales-justice-table-courtroom-law-legal-services-concept_28283-1373.jpeg);
+    background-image: linear-gradient(to right, rgba(0, 32, 76, 0.80), rgba(255, 0, 0, 0)), url(../../img/professional-male-lawyer-judge-working-with-contract-papers-documents-gavel-scales-justice-table-courtroom-law-legal-services-concept_28283-1373.jpeg);
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    height: 460px;
 }

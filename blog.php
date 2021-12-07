@@ -1,8 +1,8 @@
 <?php
     require 'dbconn.php';
-
     $errorss = array();
     $successs = array();
+
     //if suscribe button is clicked
 if (isset($_POST['suscribe'])) {
     $suscriber_email = $_POST['suscriber_email'];
@@ -18,10 +18,12 @@ if (isset($_POST['suscribe'])) {
   }
 }
 
-$sql = 'SELECT * FROM tblprojects';
+//fetch blogs
+$sql = 'SELECT * FROM tblblog';
 $statement = $connection->prepare($sql);
 $statement->execute();
-$projects = $statement->fetchAll(PDO::FETCH_ASSOC);
+$blogs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +38,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Law Society of Azerbaijan</title>
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/css/style.css">
@@ -43,9 +46,9 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<section id="wrapper_projects">
+<section class="wrapper_blog">
 
-<div class="container-fluid" data-aos="fade-right" data-aos-duration="500">
+<div class="container-fluid" data-aos="fade-left" data-aos-duration="500">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
     <a class="navbar-brand" href="index.php">
     <img src="img/loqo.main.png" alt="logo" class="img-fluid header__pic">
@@ -112,89 +115,54 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
     <br>
 
     <div class="text-left">
-        <h1 class="text-white font-weight-bold ml-5 mt-5 page-title">Projects</h1>
+        <h1 class="text-white font-weight-bold ml-5 mt-5">Blog</h1>
     </div>
 
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8"></div>
-        <div class="col-lg-3">
-            <div class="card mt-5 border-0 text-right">
-                <div class="card-body mt-5 mb-5">
-                <a href="#" class="mr-3 text-secondary text-decoration-none">About</a>
-                <a href="#" class="text-secondary text-decoration-none">Project</a>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 </div>
 </section>
 
-<div class="container mt-5 mb-5" data-aos="fade-up" data-aos-duration="500">
-    <div class="">
-        <h5 class="text-center">OUR PLANS</h5>
-        <h2 class="text-center mt-4 blog_text mb-5">ONGOING AND FINALIZED <br> PROJECTS</h2>
+<div class="container mb-5">
+    <div class="mt-5 mb-5" data-aos="fade-right" data-aos-duration="500">
+        <h5 class="text-center">OUR NEWS BLOG</h5>
     </div>
-    <div class="row">
-        <div class="card-deck">
-            <?php foreach($projects as $project): //php fetch blog post from database?>
-          <div class="card">
-            <img class="card-img-top img_blog" src="admin/uploads/<?php echo $project['image']; ?>" alt="Card image cap">
-            <div class="blog__tags">
-                <a href="#" class="tag"><?php echo $project['tags']; ?></a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title stretched-link">"<?php echo $project['project_title']; ?>"</h5>
-              <p class="card-text card-text1"><?php echo $project['PostingDate']; ?></p>
-              <form action="project-details.php"  method="post" class="text-center">
-                    <input type="hidden" name="edit_id" value="<?php echo $project["id"]; ?>">
-                      <button type="submit" name="btn_edit" class="btn btn-link text-center stretched-link">Continue reading</button>
+
+    <div class="row mb-2 mt-3" data-aos="fade-up" data-aos-duration="500">
+
+     <?php foreach($blogs as $blog): //php fetch blog post from database?>
+
+        <div class="col-md-6" id="blogs">
+
+            <div class="card-deck">
+              <div class="card row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <img class="card-img-top" src="admin/uploads/<?php echo $blog['image']; ?>" alt="Card image cap" width="272" height="300">
+                <div class="card-body text-center">
+                  <h5 class="card-title"><?php echo $blog['blog_title']; ?></h5>
+                  <p class="card-text">Author: <?php echo $blog['author']; ?></p>
+                  
+                  <p class="card-text mb-3">Category: <?php echo $blog['category']; ?></p>
+
+                   <form action="blogs-details.php"  method="post">
+                    <input type="hidden" name="edit_id" value="<?php echo $blog["id"]; ?>">
+                      <button type="submit" name="btn_edit" class="btn btn-link stretched-link">Continue reading</button>
                 </form>
-              
-            </div>
+                </div>
+                <div class="card-footer w-100 text-center">
+                  <small class="text-muted">Last updated <?php echo $blog['PostingDate']; ?></small>
+                </div>
+              </div>
           </div>
-          <?php endforeach; ?>
+
+          
         </div>
-    </div>
+
+    <?php endforeach; ?>
+   
+    
+  </div>
 </div>
 
-<div class="container mt-5 mb-5" data-aos="fade-down" data-aos-duration="500">
-    <div class="row">
-        <div class="col-lg-3 mb-2">
-            <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_1.png" class="logo_project" alt="logo_1.png">
-              </div>
-            </div>
-        </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_2.png" class="logo_project" alt="logo_2">
-              </div>
-            </div>
-        </div>
-        <div class="col-lg-3 mb-2">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_3.png" class="logo_project" alt="logo_3">
-              </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-             <div class="card shadow">
-              <div class="card-body text-center">
-                <img src="img/logo_4.png" class="logo_project" alt="logo_4">
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="footer" data-aos="fade-down" data-aos-duration="500">
-    <div class="container">
+<div class="footer">
+    <div class="container" data-aos="fade-down" data-aos-duration="500">
         <div class="row justify-content-center">
             <div class="col-lg-4 mt-5">
                 <a class="navbar-brand" href="index.php">
@@ -248,7 +216,7 @@ $projects = $statement->fetchAll(PDO::FETCH_ASSOC);
 
                 <form action="contact.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="suscriber_email" required placeholder="Your email" aria-label="Recipient's email" aria-describedby="basic-addon2">
+                        <input type="email" class="form-control" name="suscriber_email" required placeholder="Your email" aria-label="blogpient's email" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                         <input type="submit" name="suscribe" class="btn btn-danger" value="suscribe">
                         </div>

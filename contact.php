@@ -91,7 +91,9 @@ if (isset($_POST['suscribe'])) {
     <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
-    <title>Law Society of Azerbaijan</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Law Society of Azerbaijan</title>
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/css/style.css">
     
@@ -100,7 +102,7 @@ if (isset($_POST['suscribe'])) {
 
 <section class="wrapper">
 
-<div class="container-fluid">
+<div class="container-fluid" data-aos="fade-right" data-aos-duration="500">
     <nav class="navbar navbar-expand-lg navbar-light text-white bg-transparent">
     <a class="navbar-brand" href="index.php">
     <img src="img/loqo.main.png" alt="logo" class="img-fluid header__pic">
@@ -167,7 +169,7 @@ if (isset($_POST['suscribe'])) {
     <br>
 
     <div class="text-left">
-        <h1 class="text-white font-weight-bold ml-5 mt-5">Contact Us</h1>
+        <h1 class="text-white font-weight-bold ml-5 mt-5 page-title">Contact Us</h1>
     </div>
 
     <div class="container">
@@ -190,7 +192,7 @@ if (isset($_POST['suscribe'])) {
 
 
 
-<div class="container">
+<div class="container" data-aos="fade-up" data-aos-duration="500">
     <div class="row mt-5 justify-content-center">
         <div class="col-lg-12">
         <section class="map">
@@ -204,7 +206,7 @@ if (isset($_POST['suscribe'])) {
 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="contact_color col-lg-8">
+        <div class="contact_color col-lg-8" data-aos="fade-left" data-aos-duration="500">
             <div class="mt-5">
                 <h5 class=" ml-4 frm_text mb-3">CONTACT WITH US</h5>
                 <h2 class="ml-4 title_text">SEND MESSAGE</h2>
@@ -251,7 +253,7 @@ if (isset($_POST['suscribe'])) {
             </div>
         </div>
 
-        <div class="forum_right col-lg-4">
+        <div class="forum_right col-lg-4" data-aos="fade-right" data-aos-duration="500">
             <div class="mt-5">
                 <h5 class="frm_text ml-4 mb-3 text-center">CONTACT INFO</h5>
                 <h2 class="ml-4 title_text text-center">Details</h2>
@@ -281,7 +283,7 @@ if (isset($_POST['suscribe'])) {
     
 </div>
 
-<div class="footer">
+<div class="footer" data-aos="fade-down" data-aos-duration="500">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-4 mt-5">
@@ -359,6 +361,10 @@ if (isset($_POST['suscribe'])) {
 
 <script src="vendor/js/jquery-3.5.1.min.js"></script>
 <script src="vendor/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.js" integrity="sha512-678bHRnILWQudsPcjDbSoYtwimEk8yPq7BBWeJaFoSHPf7Ob7N7au8M49yY9Wbpmmi0PvDzf3Rca1mbmYQLAxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  AOS.init();
+</script>
 
 </body>
 </html>

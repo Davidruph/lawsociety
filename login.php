@@ -14,12 +14,13 @@ include 'loginCode.php';
     <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.css" integrity="sha512-ksbpl5EUb4HLEKUNItsPMT/Ih6KcISE53GbYOu3xFUVYvTSSX5AJxTI2aigdQm9uNSkSsRMHsSGNKppkt691lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <script src="vendor/js/all.min.js"></script>
     <title>Law Society of Azerbaijan</title>
 </head>
 <body>
-<div class="container">
+<div class="container" data-aos="fade-up" data-aos-duration="550">
     <div class="row justify-content-center">
         <div class="col-lg-4">
           <h1 class="text-center text-dark mt-5 mb-4">Sign in to Account</h1>
@@ -66,6 +67,10 @@ include 'loginCode.php';
 
     <script src="vendor/js/jquery-3.5.1.min.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.0.2/aos.js" integrity="sha512-678bHRnILWQudsPcjDbSoYtwimEk8yPq7BBWeJaFoSHPf7Ob7N7au8M49yY9Wbpmmi0PvDzf3Rca1mbmYQLAxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  AOS.init();
+</script>
     <script>
         $(document).ready(function() {
             $("#show_password a").on('click', function(event) {
